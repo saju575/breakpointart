@@ -1,5 +1,6 @@
 "use client";
 
+import { HOST_URL } from "@/secret";
 import { useRouter } from "next/navigation";
 import { HiOutlineTrash } from "react-icons/hi";
 
@@ -9,7 +10,7 @@ const RemoveRecipe = ({ id }) => {
     const confirmed = confirm("Are you sure?");
 
     if (confirmed) {
-      const res = await fetch(`http://localhost:3000/api/recipe/${id}`, {
+      const res = await fetch(`${HOST_URL}/api/recipe/${id}`, {
         method: "DELETE",
       });
 

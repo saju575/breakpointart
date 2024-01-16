@@ -1,12 +1,10 @@
+import { HOST_URL } from "@/secret";
 import Recipe from "../singleRecipe/recipe.layout.component";
 
 const getRecipeList = async (search = "") => {
-  const response = await fetch(
-    `http://localhost:3000/api/recipe?search=${search}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch(`${HOST_URL}/api/recipe?search=${search}`, {
+    cache: "no-store",
+  });
   const data = await response.json();
   return data;
 };

@@ -1,8 +1,9 @@
+import { HOST_URL } from "@/secret";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 
 const getRecipeDetails = async (id) => {
-  const response = await fetch(`http://localhost:3000/api/recipe/${id}`, {
+  const response = await fetch(`${HOST_URL}/api/recipe/${id}`, {
     cache: "no-store",
   });
   const data = await response.json();

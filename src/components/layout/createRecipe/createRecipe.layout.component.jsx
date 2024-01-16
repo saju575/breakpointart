@@ -1,4 +1,5 @@
 "use client";
+import { HOST_URL } from "@/secret";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -27,7 +28,7 @@ const validationSchema = Yup.object().shape({
 const CreateRecipe = async (data) => {
   try {
     // post request
-    const response = await fetch("http://localhost:3000/api/recipe", {
+    const response = await fetch(`${HOST_URL}/api/recipe`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
