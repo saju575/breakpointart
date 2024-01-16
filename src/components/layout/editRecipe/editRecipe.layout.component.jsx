@@ -83,8 +83,8 @@ const EditRecipe = ({ recipe }) => {
         }
         // console.log(recipe);
         await editRecipe(recipe.id, newRecipe);
-
-        router.push("/", { replace: true });
+        // router.refresh();
+        router.push("/");
       } catch (error) {}
     },
   });

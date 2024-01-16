@@ -73,3 +73,57 @@ export const PUT = async (req, { params }) => {
     );
   }
 };
+
+export const DELETE = async (req, { params }) => {
+  const { recipeId } = params;
+
+  try {
+    // Ensure the recipe with the specified ID exists
+    const existingRecipe = await prisma.recipe.findUnique({
+      where: {
+        id: recipeId,
+      },
+    });
+    if (!existingRecipe) {
+      return new NextResponse(
+        JSON.stringify(
+          {
+            message: "Recipe not found",
+          },
+          {
+            status: 404,
+          }
+        )
+      );
+    }
+
+    // Delete the recipe
+    await prisma.recipe.delete({
+      where: {
+        id: recipeId,
+      },
+    });
+
+    return new NextResponse(
+      JSON.stringify(
+        {
+          message: "Recipe deleted successfully",
+        },
+        {
+          status: 200,
+        }
+      )
+    );
+  } catch (error) {
+    return new NextResponse(
+      JSON.stringify(
+        {
+          message: "Something went wrong",
+        },
+        {
+          status: 500,
+        }
+      )
+    );
+  }
+};

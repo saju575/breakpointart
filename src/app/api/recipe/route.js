@@ -34,30 +34,47 @@ export const POST = async (req) => {
 export const GET = async (req) => {
   const { searchParams } = new URL(req.url);
   const searchString = searchParams.get("search") || "";
+  console.log(searchString);
 
-  const query = {
-    where: {
-      ...(searchString && {
+  // const query = {
+  //   where: {
+  //     ...(searchString &&
+  //       OR: [
+  //         {
+  //           title: {
+  //             contains: searchString,
+  //           },
+  //         },
+  //         {
+  //           ingredients: {
+  //             some: {
+  //               contains: searchString,
+  //             },
+  //           },
+  //         },
+  //       ],
+  //     ),
+  //   },
+  // };
+
+  try {
+    const data = await prisma.recipe.findMany({
+      where: {
         OR: [
           {
             title: {
               contains: searchString,
+              mode: "insensitive",
             },
           },
           {
             ingredients: {
-              some: {
-                contains: searchString,
-              },
+              has: searchString,
             },
           },
         ],
-      }),
-    },
-  };
-
-  try {
-    const data = await prisma.recipe.findMany(query);
+      },
+    });
 
     return new NextResponse(
       JSON.stringify(
