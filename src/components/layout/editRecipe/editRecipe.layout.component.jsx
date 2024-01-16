@@ -76,18 +76,18 @@ const EditRecipe = ({ recipe }) => {
         // console.log({ ...values, ingredients });
 
         // take the existing value
-        const newRecipe = {};
-        for (let key in values) {
-          if (values[key]) {
-            if (key === "ingredients") {
-              newRecipe[key] = ingredients;
-            } else {
-              newRecipe[key] = values[key];
-            }
-          }
-        }
+        // const newRecipe = {};
+        // for (let key in values) {
+        //   if (values[key]) {
+        //     if (key === "ingredients") {
+        //       newRecipe[key] = ingredients;
+        //     } else {
+        //       newRecipe[key] = values[key];
+        //     }
+        //   }
+        // }
 
-        await editRecipe(recipe.id, newRecipe);
+        await editRecipe(recipe.id, { ...values, ingredients });
         // router.refresh();
         router.push("/");
       } catch (error) {}
