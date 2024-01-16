@@ -1,7 +1,8 @@
 import EditRecipe from "@/components/layout/editRecipe/editRecipe.layout.component";
+import { HOST_URL } from "@/secret";
 
 const getRecipe = async (id) => {
-  const response = await fetch(`http://localhost:3000/api/recipe/${id}`, {
+  const response = await fetch(`${HOST_URL}/api/recipe/${id}`, {
     cache: "no-store",
   });
   const data = await response.json();
