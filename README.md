@@ -12,6 +12,7 @@
 ## Technology used
 
 Next JS | tailwindcss | prisma | formik | yup
+MongoDB as a database
 
 ## How to run
 

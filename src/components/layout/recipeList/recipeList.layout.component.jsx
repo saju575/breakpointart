@@ -1,6 +1,7 @@
 import { HOST_URL } from "@/secret";
 import Recipe from "../singleRecipe/recipe.layout.component";
 
+/* get recipe list request */
 const getRecipeList = async (search = "") => {
   const response = await fetch(`${HOST_URL}/api/recipe?search=${search}`, {
     cache: "no-store",
@@ -9,6 +10,7 @@ const getRecipeList = async (search = "") => {
   return data;
 };
 
+/* component */
 const RecipeList = async ({ search }) => {
   const recipes = await getRecipeList(search);
   if (recipes?.data?.length === 0) return <div>No recipes found</div>;

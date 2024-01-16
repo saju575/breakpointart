@@ -36,27 +36,6 @@ export const GET = async (req) => {
   const searchString = searchParams.get("search") || "";
   console.log(searchString);
 
-  // const query = {
-  //   where: {
-  //     ...(searchString &&
-  //       OR: [
-  //         {
-  //           title: {
-  //             contains: searchString,
-  //           },
-  //         },
-  //         {
-  //           ingredients: {
-  //             some: {
-  //               contains: searchString,
-  //             },
-  //           },
-  //         },
-  //       ],
-  //     ),
-  //   },
-  // };
-
   try {
     const data = await prisma.recipe.findMany({
       where: {

@@ -8,6 +8,7 @@ import Select from "react-select";
 import * as Yup from "yup";
 import ingredientList from "../../../../ingredients.json";
 
+/* modified ingredient list */
 const options = ingredientList.map((ingredient) => ({
   value: ingredient.label,
   label: ingredient.label,
@@ -25,6 +26,7 @@ const validationSchema = Yup.object().shape({
   video: Yup.string().url("Invalid URL"),
 });
 
+// create recipe request function
 const CreateRecipe = async (data) => {
   try {
     // post request
@@ -42,6 +44,12 @@ const CreateRecipe = async (data) => {
     throw error;
   }
 };
+
+/**
+ * Renders a form to create a recipe.
+ *
+ * @return {JSX.Element} The form component.
+ */
 
 const CreateRecipeForm = () => {
   const router = useRouter();
@@ -74,7 +82,7 @@ const CreateRecipeForm = () => {
             }
           }
         }
-        // console.log(recipe);
+
         await CreateRecipe(recipe);
         formik.resetForm();
 

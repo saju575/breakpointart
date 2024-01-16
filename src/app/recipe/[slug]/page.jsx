@@ -1,6 +1,7 @@
 import RecipeDetails from "@/components/layout/recipeDetails/recipeDetails.layout.component";
 import { Suspense } from "react";
 
+/**  Recipe details page */
 const RecipePage = ({ params }) => {
   const { slug } = params;
   return (

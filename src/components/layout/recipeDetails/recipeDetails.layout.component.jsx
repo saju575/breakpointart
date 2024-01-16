@@ -2,6 +2,7 @@ import { HOST_URL } from "@/secret";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 
+// get recipe details request
 const getRecipeDetails = async (id) => {
   const response = await fetch(`${HOST_URL}/api/recipe/${id}`, {
     cache: "no-store",
@@ -10,6 +11,7 @@ const getRecipeDetails = async (id) => {
   return data;
 };
 
+// get recipe details
 const RecipeDetails = async ({ id }) => {
   const recipe = await getRecipeDetails(id);
   return (

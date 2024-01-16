@@ -9,6 +9,7 @@ import Select from "react-select";
 import * as Yup from "yup";
 import ingredientList from "../../../../ingredients.json";
 
+/* modified ingredient list */
 const options = ingredientList.map((ingredient) => ({
   value: ingredient.label,
   label: ingredient.label,
@@ -26,6 +27,7 @@ const validationSchema = Yup.object().shape({
   video: Yup.string().url("Invalid URL"),
 });
 
+/* edit recipe request */
 const editRecipe = async (id, data) => {
   try {
     // post request
@@ -44,6 +46,7 @@ const editRecipe = async (id, data) => {
   }
 };
 
+/* component */
 const EditRecipe = ({ recipe }) => {
   const router = useRouter();
   const formatedIngredients = recipe.ingredients.map((ingredient) => {
@@ -53,6 +56,7 @@ const EditRecipe = ({ recipe }) => {
     };
   });
 
+  /* formik hook to handle form */
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -82,7 +86,7 @@ const EditRecipe = ({ recipe }) => {
             }
           }
         }
-        // console.log(recipe);
+
         await editRecipe(recipe.id, newRecipe);
         // router.refresh();
         router.push("/");

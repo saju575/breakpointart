@@ -1,6 +1,14 @@
 import { NextResponse } from "next/server";
 import prisma from "../../../../../prisma/prisma.config";
 
+/**
+ * Retrieves a recipe by its ID from the database.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} req.params - The parameters object containing the recipeId.
+ * @param {string} req.params.recipeId - The ID of the recipe to retrieve.
+ * @returns {Promise<NextResponse>} A Promise that resolves to a NextResponse object.
+ */
 export const GET = async (req, { params }) => {
   const { recipeId } = params;
   try {
@@ -25,6 +33,14 @@ export const GET = async (req, { params }) => {
   }
 };
 
+/**
+ * Updates a recipe with the specified ID.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} params - The parameters object.
+ * @param {string} params.recipeId - The ID of the recipe to be updated.
+ * @return {Object} - The updated recipe object.
+ */
 export const PUT = async (req, { params }) => {
   const { recipeId } = params;
 
@@ -74,6 +90,14 @@ export const PUT = async (req, { params }) => {
   }
 };
 
+/**
+ * Deletes a recipe with the specified ID.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} params - The parameters object.
+ * @param {string} params.recipeId - The ID of the recipe to delete.
+ * @return {Promise<NextResponse>} Returns a promise that resolves to a NextResponse object.
+ */
 export const DELETE = async (req, { params }) => {
   const { recipeId } = params;
 

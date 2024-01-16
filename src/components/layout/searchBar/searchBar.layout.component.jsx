@@ -3,18 +3,27 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+/**
+ * A search bar component that allows users to search for recipes or ingredients.
+ * @returns {JSX.Element} The search bar component.
+ */
 const SearchBar = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
+
+  /**
+   * Handles the search form submission.
+   * @param {Event} e - The form submission event.
+   */
   const handleSearch = (e) => {
     e.preventDefault();
-    // Handle search logic here
     if (searchTerm) {
       router.push(`?search=${searchTerm.trim()}`);
     } else {
       router.push(`/`);
     }
   };
+
   return (
     <div>
       <form onSubmit={handleSearch}>
